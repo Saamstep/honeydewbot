@@ -6,7 +6,7 @@ const fs = require("fs");
 
 
 client.on("ready", () => {
-  console.log("The bot has successfully startup");
+  console.log("The bot has successfully started.");
 });
 
 
