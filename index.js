@@ -6,7 +6,7 @@ const fs = require("fs");
 
 
 client.on("ready", () => {
-  console.log("The bot has successfully started.");
+  console.log("The bot has successfully started");
 });
 
 
@@ -70,7 +70,7 @@ client.on("message", (message) => {
 
   if (!message.content.startsWith(config.prefix)) return;
 
-  if (message.author.bot) return;
+  if (message.author.bot) return; *
 // ******SUBMIT VIDEOS (GOOGLE DRIVE) COMMAND******
 if (message.content.startsWith(config.prefix + "submit")) {
   message.channel.sendMessage("Share a **Goole Drive Folder** with submit.honeydew@gmail.com. _Make sure the clips are 1080p 60FPS_.");
