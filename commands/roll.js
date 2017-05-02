@@ -1,5 +1,7 @@
-let roll = Math.floor(Math.random() * (6 - 1)) + 1;
-
 exports.run = (client, message, args) => {
-  message.reply("You rolled a " + roll);
+  let roll = Math.floor((Math.random() * 6 ) + 1);
+  message.reply(":game_die: | You rolled a " + roll);
 };
+
+
+//   let random = Math.floor((Math.random() * 100 ) + 1);
