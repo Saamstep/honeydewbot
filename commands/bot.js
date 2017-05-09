@@ -4,7 +4,7 @@ exports.run = (client, message, args) => {
     description: "This bot was made by Samstep",
     fields: [{
       name: "Social Links:",
-      value: "[Youtube](http://www.bit.ly/subtosamstep) **|** [Twitch](http://www.twitch.tv/saamstep) **|** [Twitter](http://www.twitter.com/saamstep)"
+      value: "[YouTube](http://www.bit.ly/subtosamstep) **|** [Twitch](http://www.twitch.tv/saamstep) **|** [Twitter](http://www.twitter.com/saamstep)"
 
     }]
   });
