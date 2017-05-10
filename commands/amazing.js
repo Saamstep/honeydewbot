@@ -1,7 +1,8 @@
 exports.run = (client, message, args) => {
   message.channel.send({file:"http://i.imgur.com/DF7Haxn.png"});
-
-  console.log("Command: [!amazing] run by " + message.author);
+  console.log("======================================================");
+  console.log("Command: [!amazing] run by " + message.author.username);
+  console.log("======================================================");
 };
 
 

@@ -7,6 +7,7 @@ const fs = require("fs");
 
 
 client.on("ready", () => {
+  client.user.setGame("!@help").catch(console.error);
   console.log("The bot has successfully started");
 });
 
