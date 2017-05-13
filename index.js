@@ -21,10 +21,22 @@ fs.readdir("./events/", (err, files) => {
     let eventName = file.split(".")[0];
     // super-secret recipe to call events with all their proper arguments *after* the `client` var.
     client.on(eventName, (...args) => eventFunction.run(client, ...args));
+
   });
 });
 
 client.on("message", message => {
+  const ytdl = require('ytdl-core');
+  if (message.content.startsWith('++play')) {
+    const voiceChannel = message.member.voiceChannel;
+    if (!voiceChannel) return message.reply(`Please be in a voice channel first!`);
+    voiceChannel.join()
+      .then(connnection => {
+        const stream = ytdl("https://www.youtube.com/watch?v=dQw4w9WgXcQ", { filter: 'audioonly' });
+        const dispatcher = connnection.playStream(stream);
+        dispatcher.on('end', () => voiceChannel.leave());
+      });
+  }
   if (message.author.bot) return;
   if (!message.content.startsWith(config.prefix)) return;
 
