@@ -26,17 +26,7 @@ fs.readdir("./events/", (err, files) => {
 });
 
 client.on("message", message => {
-  const ytdl = require('ytdl-core');
-  if (message.content.startsWith('++play')) {
-    const voiceChannel = message.member.voiceChannel;
-    if (!voiceChannel) return message.reply(`Please be in a voice channel first!`);
-    voiceChannel.join()
-      .then(connnection => {
-        const stream = ytdl("https://www.youtube.com/watch?v=dQw4w9WgXcQ", { filter: 'audioonly' });
-        const dispatcher = connnection.playStream(stream);
-        dispatcher.on('end', () => voiceChannel.leave());
-      });
-  }
+
   if (message.author.bot) return;
   if (!message.content.startsWith(config.prefix)) return;
 
@@ -52,4 +42,18 @@ client.on("message", message => {
   } catch (err) {
     console.error(err);
   }
+});
+
+// Create an event listener for new guild members
+client.on('guildMemberAdd', member => {
+  // Send the message to the guilds default channel (usually #general), mentioning the member
+  member.guild.defaultChannel.send(`**Welcome to the server** ${member}**!**`);
+
+  // If you want to send the message to a designated channel on a server instead
+  // you can do the following:
+  const channel = member.guild.channels.find('name', 'member-log');
+  // Do nothing if the channel wasn't found on this server
+  if (!channel) return;
+  // Send the message, mentioning the member
+  channel.sendMessage(`**Welcome to the server** ${member}**!**`);
 });
