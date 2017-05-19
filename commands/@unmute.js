@@ -6,14 +6,14 @@ exports.run = (client, message, args) => {
   if (!message.member.roles.has(modRole.id)) {
     return message.reply(":no_entry_sign: | Error. You don't have the right permissions").catch(console.error);
   } else {
-    guild.member(message.mentions.users.first()).addRole('313439532903170048').catch(error => console.log(error));
+    guild.member(message.mentions.users.first()).removeRole('313439532903170048').catch(error => console.log(error));
     message.reply(`You have successfully muted ` + user);
 
     let logchannel = guild.channels.find("name", "log");
     logchannel.send('', {embed: {
       color: 44242,
       author: {
-        name: "A user was muted!"
+        name: "A user was unmuted!"
       },
       title: '\nUsername:',
       description: `${user.username}`,

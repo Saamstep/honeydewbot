@@ -44,16 +44,51 @@ client.on("message", message => {
   }
 });
 
-// Create an event listener for new guild members
-client.on('guildMemberAdd', member => {
-  // Send the message to the guilds default channel (usually #general), mentioning the member
+
+client.on("guildMemberAdd", member => {
+
   member.guild.defaultChannel.send(`**Welcome to the server** ${member}**!**`);
 
-  // If you want to send the message to a designated channel on a server instead
-  // you can do the following:
-  const channel = member.guild.channels.find('name', 'member-log');
-  // Do nothing if the channel wasn't found on this server
+  const channel = member.guild.channels.find("name", "member-log");
   if (!channel) return;
   // Send the message, mentioning the member
-  channel.sendMessage(`**Welcome to the server** ${member}**!**`);
+  channel.send(`**Welcome to the server** ${member}**!**`);
+});
+
+client.on("guildMemberRemove", member => {
+  let guild = member.guild;
+  guild.defaultChannel.send(`:wave: | Goodbye to ${member.user.username} we will miss you!`);
+});
+
+client.on("guildBanAdd",(guild, user) => {
+  let logchannel = guild.channels.find("name", "log");
+  logchannel.send('', {embed: {
+    color: 44242,
+    author: {
+      name: "A user was banned!"
+    },
+    title: '\nUsername:',
+    description: `${user.username}`,
+    timestamp: new Date(),
+    footer: {
+      text: 'Logged by honeydewbot'
+    }
+  }
+  });
+});
+client.on('guildBanRemove',(guild, user) => {
+  let logchannel = guild.channels.find("name", "log");
+  logchannel.send('', {embed: {
+    color: 44242,
+    author: {
+      name: "A user was banned!"
+    },
+    title: '\nUsername:',
+    description: `${user.username}`,
+    timestamp: new Date(),
+    footer: {
+      text: 'Logged by honeydewbot'
+    }
+  }
+  });
 });
