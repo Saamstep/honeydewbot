@@ -12,7 +12,6 @@ client.on("ready", () => {
 });
 
 
-
 // This loop reads the /events/ folder and attaches each event file to the appropriate event.
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
@@ -24,10 +23,26 @@ fs.readdir("./events/", (err, files) => {
 
   });
 });
-
+// YT Video like system
 client.on("message", message => {
+  if (message.content.includes(`youtube.com/watch?v=`))
+  {
+    message.react(`👍`);
+  }
 
-  if (message.author.bot) return;
+  if (message.content.includes(`youtu.be`))
+  {
+    message.react(`👍`);
+  }
+
+  if (message.content.includes(`submit.honeydew@gmail.com`))
+  {
+    message.react(`✅`);
+  }
+
+  if (message)
+
+    if (message.author.bot) return;
   if (!message.content.startsWith(config.prefix)) return;
 
   let command = message.content.split(" ")[0];
@@ -76,6 +91,7 @@ client.on("guildBanAdd",(guild, user) => {
   }
   });
 });
+
 client.on('guildBanRemove',(guild, user) => {
   let logchannel = guild.channels.find("name", "log");
   logchannel.send('', {embed: {
