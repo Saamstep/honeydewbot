@@ -1,26 +1,36 @@
 exports.run = (client, message, args) => {
 
   let modRole = message.guild.roles.find("name", "Mods");
+  let muteRole = message.guild.roles.find("name", "Muted");
   let guild = message.guild;
   let user = message.mentions.users.first();
-  if (!message.member.roles.has(modRole.id)) {
-    return message.reply(":no_entry_sign: | Error. You don't have the right permissions").catch(console.error);
-  } else {
-    guild.member(message.mentions.users.first()).addRole('313439532903170048').catch(error => console.log(error));
-    message.reply(`You have successfully muted ` + user);
+  let logchannel = guild.channels.find("name", "log");
 
-    let logchannel = guild.channels.find("name", "log");
-    logchannel.send('', {embed: {
-      color: 44242,
-      author: {
-        name: "A user was muted!"
-      },
-      title: '\nUsername:',
-      description: `${user.username}`,
-      timestamp: new Date(),
-      footer: {
-        text: 'Logged by honeydewbot'
-      }
+  if (!message.member.roles.has(modRole.id)) {
+    return message.reply(":no_entry_sign: | You don't have the right permissions");
+  }
+  guild.member(message.mentions.users.first()).addRole(muteRole);
+    // 313439532903170048
+  message.reply(`You have successfully muted ` + user);
+
+  logchannel.send('', {embed: {
+    color: 44242,
+    fields: [{
+      name: "Action Log",
+      value: "\u200b"
+    },
+    {
+      name: "Mute",
+      value: `${user}\n\u200b`
+    },
+    {
+      name: "Muted by:",
+      value: `${message.author}`
+    }],
+    timestamp: new Date(),
+    footer: {
+      text: 'Logged by honeydewbot',
     }
-    });
-  }};
+  }
+  });
+};
