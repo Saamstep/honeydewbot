@@ -5,16 +5,19 @@ exports.run = (client, message, args) => {
   let guild = message.guild;
   let user = message.mentions.users.first();
   let logchannel = guild.channels.find("name", "log");
-  
+
   if (!message.member.roles.has(modRole.id)) {
     return message.reply(":no_entry_sign: | Error. You don't have the right permissions").catch(console.error);
+  }
+  if (!message.member.roles.has(muteRole.id)) {
+    return message.reply(":no_entry_sign: | Error. This user is not muted!");
   } else {
     guild.member(message.mentions.users.first()).removeRole(muteRole).catch(error => console.log(error));
     // 313439532903170048
     message.reply(`You have successfully unmuted ` + user);
 
     logchannel.send('', {embed: {
-      color: 44242,
+      color: 0xff7400,
       fields: [{
         name: "Action Log",
         value: "\u200b"
@@ -33,4 +36,5 @@ exports.run = (client, message, args) => {
       }
     }
     });
-  }};
+  }
+};

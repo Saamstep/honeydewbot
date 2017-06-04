@@ -62,7 +62,7 @@ client.on("message", message => {
 
 client.on("guildMemberAdd", member => {
 
-  member.guild.defaultChannel.send(`**Welcome to the server** ${member}**!**`);
+  member.guild.defaultChannel.send(`**Welcome to the server** ${member}`);
 
   const channel = member.guild.channels.find("name", "member-log");
   if (!channel) return;
@@ -72,13 +72,13 @@ client.on("guildMemberAdd", member => {
 
 client.on("guildMemberRemove", member => {
   let guild = member.guild;
-  guild.defaultChannel.send(`:wave: | Goodbye to ${member.user.username} we will miss you!`);
+  guild.defaultChannel.send(`**See you later** ${member.user.username}`);
 });
 
 client.on("guildBanAdd",(guild, user) => {
   let logchannel = guild.channels.find("name", "log");
   logchannel.send('', {embed: {
-    color: 44242,
+    color: 0xf0000,
     author: {
       name: "A user was banned!"
     },
@@ -95,7 +95,7 @@ client.on("guildBanAdd",(guild, user) => {
 client.on('guildBanRemove',(guild, user) => {
   let logchannel = guild.channels.find("name", "log");
   logchannel.send('', {embed: {
-    color: 44242,
+    color: 0xff0000,
     author: {
       name: "A user was banned!"
     },

@@ -1,24 +1,29 @@
 exports.run = (client, message, args) => {
-  let result = args.join(' ');
-  let messagecount = parseInt(result);
+  let result = parseInt(args[0]) + 1;
+  let resultLog = args[0];
+//  let messagecount = parseInt(result);
   let guild = message.guild;
   let modRole = message.guild.roles.find("name", "Mods");
+
+  message.delete(0);
+
   if (!message.member.roles.has(modRole.id)) {
     return message.reply(":no_entry_sign: | Error. You don't have the right permissions").catch(console.error);
   } else {
-    message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
+    message.channel.bulkDelete(result);
     message.reply("Bulk deleted messages successfully!");
+
     let logchannel = guild.channels.find("name", "log");
-    console.log(message.channel + " BULK DELETED IN");
+
     logchannel.send('', {embed: {
-      color: 44242,
+      color: 0xFFFF00,
       fields: [{
         name: "Action Log",
         value: "\u200b"
       },
       {
-        name: "Purged",
-        value: `${result} messages\n\u200b`
+        name: "Purged:",
+        value:  `${resultLog} messages\n\u200b`
       },
       {
         name: "By:",

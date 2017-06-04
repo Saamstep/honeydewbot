@@ -9,28 +9,33 @@ exports.run = (client, message, args) => {
   if (!message.member.roles.has(modRole.id)) {
     return message.reply(":no_entry_sign: | You don't have the right permissions");
   }
-  guild.member(message.mentions.users.first()).addRole(muteRole);
-    // 313439532903170048
-  message.reply(`You have successfully muted ` + user);
+  if (message.member.roles.has(muteRole.id)) {
+    return message.reply(":no_entry_sign: | Error. This user is already muted!");
+  } else {
 
-  logchannel.send('', {embed: {
-    color: 44242,
-    fields: [{
-      name: "Action Log",
-      value: "\u200b"
-    },
-    {
-      name: "Mute",
-      value: `${user}\n\u200b`
-    },
-    {
-      name: "Muted by:",
-      value: `${message.author}`
-    }],
-    timestamp: new Date(),
-    footer: {
-      text: 'Logged by honeydewbot',
+    guild.member(message.mentions.users.first()).addRole(muteRole);
+    // 313439532903170048
+    message.reply(`You have successfully muted ` + user);
+
+    logchannel.send('', {embed: {
+      color: 0xff7400,
+      fields: [{
+        name: "Action Log",
+        value: "\u200b"
+      },
+      {
+        name: "Mute",
+        value: `${user}\n\u200b`
+      },
+      {
+        name: "Muted by:",
+        value: `${message.author}`
+      }],
+      timestamp: new Date(),
+      footer: {
+        text: 'Logged by honeydewbot',
+      }
     }
+    });
   }
-  });
 };
