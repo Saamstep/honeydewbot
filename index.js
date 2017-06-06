@@ -97,7 +97,7 @@ client.on('guildBanRemove',(guild, user) => {
   logchannel.send('', {embed: {
     color: 0xff0000,
     author: {
-      name: "A user was banned!"
+      name: "A user was unbanned!"
     },
     title: '\nUsername:',
     description: `${user.username}`,
