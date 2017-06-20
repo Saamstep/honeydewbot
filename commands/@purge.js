@@ -11,7 +11,9 @@ exports.run = (client, message, args) => {
     return message.reply(":no_entry_sign: | Error. You don't have the right permissions").catch(console.error);
   } else {
     message.channel.bulkDelete(result);
-    message.reply("Bulk deleted messages successfully!");
+    message.reply("Bulk deleted messages successfully!")
+      .then(message => message.delete([2000]));
+
 
     let logchannel = guild.channels.find("name", "log");
 
