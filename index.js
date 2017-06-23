@@ -12,10 +12,7 @@ client.on("ready", () => {
 });
 
 
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
 // This loop reads the /events/ folder and attaches each event file to the appropriate event.
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
@@ -62,7 +59,7 @@ client.on("message", message => {
     console.error(err);
   }
 });
-<<<<<<< Updated upstream
+
 
 
 client.on("guildMemberAdd", member => {
@@ -113,5 +110,3 @@ client.on('guildBanRemove',(guild, user) => {
   }
   });
 });
-=======
->>>>>>> Stashed changes

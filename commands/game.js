@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+
  exports.run = (client, message, args) => {
    let game = args.join(' ');
    let admin = message.guild.roles.find("name", "Supreme Commander");
@@ -17,7 +17,7 @@
    }
 
  };
-=======
+
 /* exports.run = (client, message, args) => {
   let admin = message.guild.roles.find("name", "Supreme Commander");
   if (!message.member.roles.has(admin.id)) {
@@ -30,4 +30,3 @@
 
 };
 */
->>>>>>> Stashed changes
