@@ -5,7 +5,6 @@ exports.run = (client, message, args) => {
     description: "This bot was made by Samstep",
     fields: [{
       name: "Social Links:",
-<<<<<<< Updated upstream
       value: "[YouTube](http://www.bit.ly/subtosamstep) **|** [Twitch](http://www.twitch.tv/saamstep) **|** [Twitter](http://www.twitter.com/saamstep) **|** [GitHub](http://www.github.com/saamstep/honeydewbot)"
     },
     {
@@ -13,10 +12,6 @@ exports.run = (client, message, args) => {
       value: `${config.version}`
     }
     ]
-=======
-      value: "[YouTube](http://www.bit.ly/subtosamstep) **|** [Twitch](http://www.twitch.tv/saamstep) **|** [Twitter](http://www.twitter.com/saamstep)"
 
-    }]
->>>>>>> Stashed changes
   });
 };

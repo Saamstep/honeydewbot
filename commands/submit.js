@@ -8,7 +8,7 @@
       },
       {
         name: "How can I record my gameplay?",
-        value: "Free programs like [OBS](https://obsproject.com/) and [GeForceExperience](http://www.geforce.com/geforce-experience) (NVIDIA GFX Cards ONLY) can record your games in 1080p 60FPS"
+        value: "Free programs like [OBS](https://obsproject.com/) and [GeForceExperience](http://www.geforce.com/geforce-experience) (NVIDIA GFX Cards ONLY & used by Honeydew) can record your games in 1080p 60FPS"
       },
       {
         name: "How do I set it up?",
