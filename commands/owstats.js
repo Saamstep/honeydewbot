@@ -24,20 +24,19 @@ exports.run = (client, message, args) => {
       return message.channel.send("Error! Please provide a platform\n\n`!owstats <Username>-<BNET#> <region> <platform>`");
     }
     body = JSON.parse(body);
-    let compWins = body.competitive.win;
-    let compPlayed = body.competitive.played;
-    let WinPercent = compWins / compPlayed;
+    let WinPercent = body.games.competitive.won / body.games.competitive.played;
+    let finalWinPercent = WinPercent.toString().substring(2, 4);
 
 
     const embed = {
-      "description": "Powered by [overwatch-api](https://ow-api.herokuapp.com/docs/).",
+      "description": "More stats for " + `[${username}](https://www.overbuff.com/players/pc/Samstep-1428)` + "",
       "color": 0x9900,
       "thumbnail": {
-        "url": "http://www.sanjaywebdesigner.com/articles/wp-content/uploads/2015/02/rank-your-website-faster-in-2015.jpg"
+        "url": `${body.competitive.rank_img}`
       },
       "author": {
         "name": `${body.username}'s Stats`,
-        "icon_url": "http://i.imgur.com/YZ4w2ey.png"
+        "icon_url": "https://i.imgur.com/0RIw2RB.png"
       },
       "fields": [
         {
@@ -58,7 +57,7 @@ exports.run = (client, message, args) => {
         },
         {
           "name": "Competitive Win Percentage",
-          "value": `${WinPercent}`
+          "value": `${finalWinPercent}%`
         }
       ]
     };
