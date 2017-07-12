@@ -25,11 +25,13 @@ exports.run = (client, message, args) => {
     }
     body = JSON.parse(body);
     let WinPercent = body.games.competitive.won / body.games.competitive.played;
+//    let Ousername = args;
     let finalWinPercent = WinPercent.toString().substring(2, 4);
+    let overbuff = `[` + username + `](https://www.overbuff.com/players/` + platform + `/${username})`;
 
 
     const embed = {
-      "description": "More stats for " + `[${username}](https://www.overbuff.com/players/pc/Samstep-1428)` + "",
+      "description": "More stats for: " + overbuff,
       "color": 0x9900,
       "thumbnail": {
         "url": `${body.competitive.rank_img}`
